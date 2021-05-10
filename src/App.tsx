@@ -1,9 +1,13 @@
-import React from 'react';
-import List from './components/TodoList';
+import React from "react";
+import List from "./components/TodoList";
+import AddTodo from "./components/AddTodo";
 
 function App() {
   return (
-    <List />
+    <>
+      <AddTodo />
+      <List />
+    </>
   );
 }
 

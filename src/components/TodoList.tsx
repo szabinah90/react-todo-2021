@@ -2,24 +2,24 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { IRootReducer } from "../redux/reducers";
 // import { getTodos } from "../redux/actions/todos.action";
-import { getTodos } from "../redux/actions/thunks";
+import { getTodos, updateTodo } from "../redux/actions/thunks";
 import { ITodo } from "../models/todo.interface";
-import { Checkbox, List, ListItem, ListItemText } from "@material-ui/core";
+import { List } from "@material-ui/core";
+import { TodoItem } from "./TodoItem";
+import { sortedTodos } from "../redux/selectors/todos.selectors";
 
-export const TodoList: React.FC<{ todos: ITodo[]; getTodos: any }> = ({
-  todos,
-  getTodos,
-}) => {
+export const TodoList: React.FC<{
+  todos: ITodo[];
+  getTodos: any;
+  updateTodo: any;
+}> = ({ todos, getTodos, updateTodo }) => {
   useEffect(() => {
     getTodos();
   }, [getTodos]); // ezt nem muszáj, csak warningolt; egyszer fut meg, mert a fgv ref-je nem fog változni
   return (
-    <List component="nav" aria-label="main mailbox folders">
+    <List component="nav">
       {todos.map((todo) => (
-        <ListItem key={todo.id} button>
-          <Checkbox />
-          <ListItemText>{todo.title}</ListItemText>
-        </ListItem>
+        <TodoItem key={todo.id} todo={todo} updateTodo={updateTodo} />
       ))}
     </List>
   );
@@ -28,13 +28,19 @@ export const TodoList: React.FC<{ todos: ITodo[]; getTodos: any }> = ({
 // @ts-ignore
 const mapStateToProps = (state: IRootReducer) => {
   const { todo } = state;
-  return { todos: todo.items };
+  // ez azért kell, hogy ne a reducerben rendezzünk, mert a statehez nem nyúlunk így
+  // szelektorokba szervezzük a logikát
+  // több szelektor kombinálásához RESELECt
+  return { todos: sortedTodos(todo) };
 };
 
 // @ts-ignore
 
 const mapDispatchToProps = (dispatch) => {
-  return { getTodos: () => dispatch(getTodos()) };
+  return {
+    getTodos: () => dispatch(getTodos()),
+    updateTodo: (todo: ITodo) => dispatch(updateTodo(todo)),
+  };
   // amíg nem volt Thunk, addig közvetlenül dispatcheltünk: return { getTodos: () => dispatch(getTodos) }
   // mostmár csak akkor, ha lefutott az async hívás (dispatch a mapDispatchToProps paramétere)
 };
