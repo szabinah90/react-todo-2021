@@ -37,6 +37,11 @@ const todoReducer = (state = initialState, action: ITodoAction) => {
         ...state,
         items: [...state.items, action.payload],
       };
+    case TODOS.DELETE:
+      return {
+        ...state,
+        items: state.items.filter((i) => i.id !== action.payload),
+      };
     default:
       return state;
   }

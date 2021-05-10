@@ -8,7 +8,7 @@ import { ITodo } from "../models/todo.interface";
 import { connect } from "react-redux";
 
 const validation = yup.object({
-  newTodo: yup.string().max(10, "Max 10 characters").required("Required"),
+  newTodo: yup.string().max(50, "Max 50 characters").required("Required"),
 });
 
 export const AddTodo: React.FC<{ createTodo: any }> = ({ createTodo }) => {
