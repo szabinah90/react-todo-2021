@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { ITodo } from "../../models/todo.interface";
 import { IconButton } from "@material-ui/core";
 import { Check, Clear } from "@material-ui/icons";
-import { Form, TextField } from "./TodoItemEdit.styled";
+import { Form, TextField, ButtonContainer } from "./TodoItemEdit.styled";
 
 const validation = yup.object({
   todoTitle: yup.string().max(50, "Max 50 characters").required("Required"),
@@ -35,19 +35,19 @@ export const UpdateTodo: React.FC<{
         error={Boolean(formik.errors.todoTitle)}
         helperText={formik.errors.todoTitle}
       />
-      <div>
-        <IconButton color="primary" aria-label="add" type="submit">
+      <ButtonContainer>
+        <IconButton color="primary" aria-label="save" type="submit">
           <Check />
         </IconButton>
         <IconButton
-          color="primary"
-          aria-label="add"
+          color="secondary"
+          aria-label="cancel"
           type="button"
           onClick={() => setEditMode(false)}
         >
           <Clear />
         </IconButton>
-      </div>
+      </ButtonContainer>
     </Form>
   );
 };

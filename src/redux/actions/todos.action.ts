@@ -13,6 +13,12 @@ export const resolveTodoAction = (todo: ITodo) => ({
   payload: todo,
 });
 
-export const addTodoAction = (todo: ITodo) => ({ type: TODOS.CREATE, payload: todo });
+export const addTodoAction = (todo: ITodo) => ({
+  type: TODOS.CREATE,
+  payload: todo,
+});
 
-export const deleteTodoAction = (id: number) => ({ type: TODOS.DELETE, payload: id });
+export const deleteTodoAction = (id: number) => ({
+  type: TODOS.DELETE,
+  payload: id,
+});

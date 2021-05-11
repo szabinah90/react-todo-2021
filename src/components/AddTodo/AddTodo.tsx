@@ -1,11 +1,12 @@
-import { IconButton, TextField } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
 import React from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { createTodo } from "../redux/actions/thunks";
-import { ITodo } from "../models/todo.interface";
+import { createTodo } from "../../redux/actions/thunks";
+import { ITodo } from "../../models/todo.interface";
 import { connect } from "react-redux";
+import { Form, TextField } from "./AddTodo.styled";
 
 const validation = yup.object({
   newTodo: yup.string().max(50, "Max 50 characters").required("Required"),
@@ -16,12 +17,12 @@ export const AddTodo: React.FC<{ createTodo: any }> = ({ createTodo }) => {
     initialValues: { newTodo: "" },
     validationSchema: validation,
     onSubmit: (value) => {
-        createTodo({ title: value.newTodo, userId: 1, completed: false });
-        formik.resetForm();
+      createTodo({ title: value.newTodo, completed: false });
+      formik.resetForm();
     },
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit}>
       <TextField
         id="todo"
         name="newTodo" /* FONTOS, HOGY ÚGY LEGYEN ELNEVEZVE, MINT AZ INITAL VALUESBEN A KULCS */
@@ -34,8 +35,8 @@ export const AddTodo: React.FC<{ createTodo: any }> = ({ createTodo }) => {
       <IconButton color="primary" aria-label="add" type="submit">
         <AddCircle />
       </IconButton>
-    </form>
-  )
+    </Form>
+  );
 };
 
 // @ts-ignore

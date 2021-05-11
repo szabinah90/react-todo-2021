@@ -4,13 +4,9 @@ import { TextField as MuiTextField } from "@material-ui/core";
 export const Form = styled.form`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const TextField = styled(MuiTextField)`
-  min-width: 300px;
-`;
-
-export const ButtonContainer = styled.div`
-  display: flex;
+  width: 300px;
 `;

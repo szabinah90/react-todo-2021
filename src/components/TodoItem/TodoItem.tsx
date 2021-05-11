@@ -3,6 +3,7 @@ import { ITodo } from "../../models/todo.interface";
 import { TodoItemView } from "../TodoItemView/TodoItemView";
 import { ListItem } from "./TodoItem.styled";
 import { UpdateTodo } from "../TodoItemEdit/TodoItemEdit";
+import { Paper } from "@material-ui/core";
 
 // ha nem parentből akarom megkapni propssal, akkor connectelni kell a storet, mint a TodoList-ben
 export const TodoItem: React.FC<{
@@ -12,17 +13,19 @@ export const TodoItem: React.FC<{
 }> = (props) => {
   const [editMode, setEditMode] = useState<true | false>(false);
   return (
-    <ListItem button>
-      {editMode ? (
-        <UpdateTodo
-          todo={props.todo}
-          updateTodo={props.updateTodo}
-          setEditMode={setEditMode}
-        />
-      ) : (
-        // spreadeli a propsokat, tudni fogja, hogy melyik-melyik, mert egyformán van elnevezve
-        <TodoItemView {...props} setEditMode={setEditMode} />
-      )}
-    </ListItem>
+    <Paper elevation={2}>
+      <ListItem button>
+        {editMode ? (
+          <UpdateTodo
+            todo={props.todo}
+            updateTodo={props.updateTodo}
+            setEditMode={setEditMode}
+          />
+        ) : (
+          // spreadeli a propsokat, tudni fogja, hogy melyik-melyik, mert egyformán van elnevezve
+          <TodoItemView {...props} setEditMode={setEditMode} />
+        )}
+      </ListItem>
+    </Paper>
   );
 };

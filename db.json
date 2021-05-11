@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": 0,
+      "title": "Első todo",
+      "completed": false
+    },
+    {
+      "title": "Második todo, szerk teszt",
+      "completed": false,
+      "id": 1
+    },
+    {
+      "title": "Harmadik todo",
+      "completed": true,
+      "id": 2
+    }
+  ]
+}

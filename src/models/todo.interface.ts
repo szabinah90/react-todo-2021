@@ -3,7 +3,6 @@ export interface ITodo extends INewTodo {
 }
 
 export interface INewTodo {
-  userId: number;
   title: string;
   completed: boolean;
 }

@@ -1,12 +1,15 @@
-import { combineReducers } from 'redux'
-import todoReducer, {ITodoReducer} from "./todos.reducer";
+import { combineReducers } from "redux";
+import todoReducer, { ITodoReducer } from "./todos.reducer";
+import searchReducer, { ISearchReducer } from "./search.reducer";
 
 export interface IRootReducer {
-    todo: ITodoReducer;
+  todo: ITodoReducer;
+  search: ISearchReducer;
 }
 
 const rootReducer = combineReducers({
-    todo: todoReducer
+  todo: todoReducer,
+  search: searchReducer,
 });
 
-export default rootReducer
+export default rootReducer;

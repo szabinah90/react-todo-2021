@@ -34,15 +34,15 @@ export const TodoItemView: React.FC<{
       <div>
         <IconButton
           color="primary"
-          aria-label="add"
+          aria-label="edit"
           type="button"
           onClick={handleEditClick}
         >
           <Edit />
         </IconButton>
         <IconButton
-          color="primary"
-          aria-label="add"
+          color="secondary"
+          aria-label="delete"
           type="button"
           onClick={handleDeleteClick}
         >
