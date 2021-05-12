@@ -27,6 +27,14 @@ describe("selectors", () => {
       expect(result).toHaveLength(1);
       expect(result[0].id).toEqual(0);
     });
+
+    test("it returns a filtered array by a search keyword (empty string)", () => {
+      const result = selectors.filteredTodos({
+        todo: state,
+        search: { keyword: "" },
+      });
+      expect(result).toHaveLength(3);
+    });
   });
 
   describe("completedTodos", () => {
@@ -77,7 +85,7 @@ describe("selectors", () => {
   });
 
   describe("uncompletedTodosCount", () => {
-    test("it returns the number of completed items", () => {
+    test("it returns the number of uncompleted items", () => {
       const result = selectors.uncompletedTodosCount({
         todo: state,
         search: { keyword: "" },
