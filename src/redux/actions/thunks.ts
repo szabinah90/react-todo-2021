@@ -16,6 +16,7 @@ export const getTodos = () => async (
 ) => {
   try {
     const response = await api.get("/todos");
+    console.log("THUNK resolveTodosAction");
     dispatch(resolveTodosAction(response));
   } catch (apiError) {
     console.error(apiError);
@@ -29,6 +30,7 @@ export const updateTodo = (todo: ITodo) => async (
 ) => {
   try {
     const response = await api.put(`/todos/${todo.id}`, { body: todo });
+    console.log("THUNK resolveTodoAction");
     dispatch(resolveTodoAction(response));
   } catch (apiError) {
     console.error(apiError);
@@ -42,6 +44,7 @@ export const createTodo = (todo: INewTodo) => async (
 ) => {
   try {
     const response = await api.post("/todos", { body: todo });
+    console.log("THUNK addTodoAction");
     dispatch(addTodoAction(response));
   } catch (apiError) {
     console.error(apiError);
@@ -55,6 +58,7 @@ export const deleteTodo = (id: number) => async (
 ) => {
   try {
     await api.delete(`/todos/${id}`);
+    console.log("THUNK deleteTodoAction");
     dispatch(deleteTodoAction(id));
   } catch (apiError) {
     console.error(apiError);

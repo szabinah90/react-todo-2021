@@ -25,6 +25,7 @@ export const TodoList: React.FC<{
   deleteTodo: any;
 }> = ({ todos, getTodos, updateTodo, deleteTodo }) => {
   useEffect(() => {
+    console.log('TodoList useEffect getTodos');
     getTodos();
   }, [getTodos]); // ezt nem muszáj, csak warningolt; egyszer fut meg, mert a fgv ref-je nem fog változni
   return (

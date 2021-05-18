@@ -10,9 +10,11 @@ export const TodoItemView: React.FC<{
   setEditMode: any;
 }> = ({ todo, updateTodo, deleteTodo, setEditMode }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("TodoItemView updateTodo");
     updateTodo({ ...todo, completed: event.target.checked });
   };
   const handleDeleteClick = () => {
+    console.log("TodoItemView deleteTodo");
     deleteTodo(todo.id);
   };
   const handleEditClick = () => {

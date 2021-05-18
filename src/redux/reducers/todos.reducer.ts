@@ -17,13 +17,16 @@ interface ITodoAction {
 const todoReducer = (state = initialState, action: ITodoAction) => {
   switch (action.type) {
     case TODOS.GET:
+      console.log("REDUCER GET");
       return { ...state, items: [] };
     case TODOS.RESOLVE_TODOS:
+      console.log("REDUCER RESOLVE_TODOS");
       return {
         ...state,
         items: [...action.payload],
       };
     case TODOS.RESOLVE_TODO:
+      console.log("REDUCER RESOLVE_TODO");
       const filteredItems = state.items.filter(
         (i) => action.payload.id !== i.id
       );
@@ -33,11 +36,13 @@ const todoReducer = (state = initialState, action: ITodoAction) => {
       };
       return newState;
     case TODOS.CREATE:
+      console.log("REDUCER CREATE");
       return {
         ...state,
         items: [...state.items, action.payload],
       };
     case TODOS.DELETE:
+      console.log("REDUCER DELETE");
       return {
         ...state,
         items: state.items.filter((i) => i.id !== action.payload),

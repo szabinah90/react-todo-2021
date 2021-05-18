@@ -17,6 +17,7 @@ export const AddTodo: React.FC<{ createTodo: any }> = ({ createTodo }) => {
     initialValues: { newTodo: "" },
     validationSchema: validation,
     onSubmit: (value) => {
+      console.log("BUTTON createTodo");
       createTodo({ title: value.newTodo, completed: false });
       formik.resetForm();
     },

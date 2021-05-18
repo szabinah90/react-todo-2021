@@ -12,8 +12,13 @@
     },
     {
       "title": "Harmadik todo",
-      "completed": true,
+      "completed": false,
       "id": 2
+    },
+    {
+      "title": "sdf",
+      "completed": false,
+      "id": 3
     }
   ]
 }
